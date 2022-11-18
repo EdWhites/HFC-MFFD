@@ -39,7 +39,6 @@ def get_result(model,feature,usage):
         test_label = np.array(test_label)
     val_set = FeatureDataset(feature,test_label)
     val_loader = DataLoader(val_set, batch_size=batch_size, shuffle=False, num_workers=16, pin_memory=True)
-    model.eval()
     t=0
     with torch.no_grad():
         for j, data in enumerate(val_loader):
