@@ -14,8 +14,7 @@ class FeatureDataset(Dataset):
         self.x=x
         # label is required to be a LongTensor
         self.y=y
-
-
+        
     def __len__(self):
         return len(self.x)
 
@@ -53,18 +52,6 @@ def get_result(model,feature,usage):
 if __name__ == '__main__':
     label = [0] * 2000+[1] * 2000 +[2] * 2000 +[3] * 2000+[4] * 2000
     parser=argparse.ArgumentParser(description='ForgeryNIR_simple_test')
-    path_rb='./model/resnet_model/binary_classification'
-    path_rg='./model/resnet_model/gan_classification'
-    path_rdb='./model/resnet_dct_model/binary_classification'
-    path_rdg='./model/resnet_dct_model/gan_classification'
-    path_sb='./model/sift_model/binary_classification'
-    path_sg='./model/sift_model/gan_classification'
-    os.makedirs(path_rb,exist_ok=True)
-    os.makedirs(path_rg, exist_ok=True)
-    os.makedirs(path_rdb, exist_ok=True)
-    os.makedirs(path_rdg, exist_ok=True)
-    os.makedirs(path_sb, exist_ok=True)
-    os.makedirs(path_sg, exist_ok=True)
     parser.add_argument('--train_dir',type=str)
     parser.add_argument('--test_dir',type=str)
     args=parser.parse_args()
