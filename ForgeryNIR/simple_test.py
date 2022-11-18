@@ -85,14 +85,14 @@ if __name__ == '__main__':
     score_resnet_g=get_result(model=resnet_model_g,feature=resnet_feature_g,usage='gan_classification')
 
     score_b= score_resnet_b+score_resnet_dct_b+score_sift_b
-    binary_pred = np.argmax(score_b,axis=1)
+    pred = np.argmax(score_b,axis=1)
     acc=0
     score_g=score_resnet_g+score_sift_g
-    for i in range(len(binary_pred)):
-        if binary_pred[i]==1:
-            binary_pred[i] = np.argmax(score_g[i])+1
-    for i in range(0, len(binary_pred)):
-        if binary_pred[i] == label[i]:
+    for i in range(len(pred)):
+        if pred[i]==1:
+            pred[i] = np.argmax(score_g[i])+1
+    for i in range(0, len(pred)):
+        if pred[i] == label[i]:
             acc += 1
 
     print('the result for {} is {} %'.format(args.test_dir,acc))
