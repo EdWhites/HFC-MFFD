@@ -23,7 +23,7 @@ Considering that preprocessing might take a certain time, we provide feature ext
 
 | Feature and Model   | Download                                                     |
 | ------- | ------------------------------------------------------------ |
-| HFC-MFFD | [BaiduNetDisk(vyfb)](https://pan.baidu.com/s/1PNzDFgi13gRFUq99k_3QYw) |
+| HFC-MFFD | [BaiduNetDisk(myc9)](https://pan.baidu.com/s/1pbriOiIpux-dWSu975kO-Q) |
 
 
 After downloading the feature and trained models, the feature should be put to `./ForgeryNIR/feature`, and the models should be put to `./ForgeryNIR/model`. Otherwise, you should change the default path we declare in `config.py`.
