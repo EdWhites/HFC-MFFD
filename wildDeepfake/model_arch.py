@@ -5,12 +5,12 @@ from torch.nn import TransformerEncoderLayer
 
 
 def ResNet_50():
-    m=models.resnet50()
+    m=models.resnet50(weights=models.ResNet50_Weights.DEFAULT)
     new_model = nn.Sequential(*list(m.children())[:-1])
     resnet_50 = new_model
     return resnet_50
 
-def ResNet_50_dct():
+def ResNet_50_dct(weights=models.ResNet50_Weights.DEFAULT):
     resnet_50 = models.resnet50()
     resnet_50.conv1 = nn.Conv2d(1, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
     new_model = nn.Sequential(*list(resnet_50.children())[:-1])
@@ -79,4 +79,28 @@ class SIFTMLP(nn.Module):
         x=self.act(x)
         x = self.dropout(x)
         x=self.fc3(x)
+        return x
+
+class AttentionResNet(nn.Module):
+    def __init__(self, n_classes,patch_num):
+        super(AttentionResNet, self).__init__()
+        self.pnum=patch_num
+        self.fc1 = nn.Linear(self.pnum*2048, 2048)
+        self.dropout = nn.Dropout(0.5)
+        self.fc2 = nn.Linear(2048, 512)
+        self.fc3 = nn.Linear(512, n_classes)
+        self.act = nn.ReLU()
+        self.attention = nn.TransformerEncoderLayer(d_model=2048, nhead=8)
+
+    def forward(self, x):
+        x = x.view(-1, self.pnum, 2048)
+        x = self.attention(x)
+        x = x.view(-1, self.pnum*2048)
+        x = self.fc1(x)
+        x = self.act(x)
+        x = self.dropout(x)
+        x = self.fc2(x)
+        x = self.act(x)
+        x = self.dropout(x)
+        x = self.fc3(x)
         return x
