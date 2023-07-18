@@ -23,7 +23,7 @@ We also provide models trained on the wildDeepfake dataset.
 
 ## Usage
 ### Edit configuration
-Before running these codes, you'd better check 'config.py' and edit them to suit your situation.
+Before running these codes, you'd better check `config.py` in the folder named wildDeepfake and edit them to suit your situation.
 
 ### Train models
 
@@ -39,7 +39,7 @@ torchrun --nproc_per_node={the num of the GPUs} train.py
 | HFC-MFFD | [BaiduNetDisk(ia97)](https://pan.baidu.com/s/1Wgm8uSrkGdWeAYuhRSITcw) |
 
 
-After downloading the feature and trained models, the feature should be put to `./ForgeryNIR/feature`, and the models should be put to `./ForgeryNIR/model`. Otherwise, you should change the default path we declare in `config.py`.
+After downloading the feature and trained models, the feature should be put to `./ForgeryNIR/feature`, and the models should be put to `./ForgeryNIR/model`. Otherwise, you should change the default path we declare in `config.py` from the folder named ForgeryNIR.
 
 ### Test the model
 
