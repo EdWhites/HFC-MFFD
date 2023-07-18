@@ -19,11 +19,13 @@ Considering that preprocessing might take a certain time, we provide feature ext
 | ------------ | ---------------------------------------------------------- | ------- |
 | ForgeryNIR   | [ForgeryNIR](https://github.com/AEP-WYK/forgerynir)        | 240,000 |
 
-### Download feature and trained models
+
+## Evaluation
+### Download feature and trained models obtained from the ForgeryNIR dataset for testing
 
 | Feature and Model   | Download                                                     |
 | ------- | ------------------------------------------------------------ |
-| HFC-MFFD | [BaiduNetDisk(myc9)](https://pan.baidu.com/s/1pbriOiIpux-dWSu975kO-Q) |
+| HFC-MFFD | [BaiduNetDisk(ia97)](https://pan.baidu.com/s/1Wgm8uSrkGdWeAYuhRSITcw) |
 
 
 After downloading the feature and trained models, the feature should be put to `./ForgeryNIR/feature`, and the models should be put to `./ForgeryNIR/model`. Otherwise, you should change the default path we declare in `config.py`.
@@ -33,3 +35,5 @@ After downloading the feature and trained models, the feature should be put to `
 ```
 python -m simple_test --train_dir std_multi --test_dir mix_multi
 ```
+
+## Download Models
