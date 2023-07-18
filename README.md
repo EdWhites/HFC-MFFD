@@ -61,6 +61,10 @@ After downloading the trained models, the models should be put to `./WildDeepFak
 torchrun --nproc_per_node={the num of the GPUs} get_result_test.py
 ```
 
+### Save the result
+```
+torchrun --nproc_per_node=1 get_score_save.py
+```
 
 
 
