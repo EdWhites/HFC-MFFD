@@ -1,6 +1,8 @@
 # HFC-MFFD
-These files contain source codes we use in our paper for testing the forgery classification evaluation accuracy on ForgeryNIR dataset.
+These files contain source codes we use in our paper for testing the forgery classification evaluation accuracy on the ForgeryNIR dataset.
 Considering that preprocessing might take a certain time, we provide feature extracted from these images by our trained feature extraction models, and provide ForgeryClassifier to obtain testing accuracy.
+
+We also provide models trained on the wildDeepfake dataset.
 
 ## Dependencies
 
@@ -19,9 +21,18 @@ Considering that preprocessing might take a certain time, we provide feature ext
 | ------------ | ---------------------------------------------------------- | ------- |
 | ForgeryNIR   | [ForgeryNIR](https://github.com/AEP-WYK/forgerynir)        | 240,000 |
 
+## Usage
+### Edit configuration
+Before running these codes, you'd better check 'config.py' and edit them to suit your situation.
 
-## Evaluation
-### Download feature and trained models obtained from the ForgeryNIR dataset for testing
+### Train models
+
+```
+torchrun --nproc_per_node={the num of the GPUs} train.py
+```
+
+## Evaluation of the ForgeryNIR dataset
+### Download feature and trained models obtained from the ForgeryNIR dataset for evaluation
 
 | Feature and Model   | Download                                                     |
 | ------- | ------------------------------------------------------------ |
@@ -36,4 +47,20 @@ After downloading the feature and trained models, the feature should be put to `
 python -m simple_test --train_dir std_multi --test_dir mix_multi
 ```
 
-## Download Models
+## Evaluation of the wildDeepfake dataset
+### Download trained models obtained from the wildDeepfake dataset for evaluation
+| Model   | Download                                                     |
+| ------- | ------------------------------------------------------------ |
+| HFC-MFFD | [BaiduNetDisk(tj6r)](https://pan.baidu.com/s/1R8D8uQVxSwIBMvqcq2Euqg) |
+
+After downloading the trained models, the models should be put to `./WildDeepFake/model`. Otherwise, you should change the default path we declare in `get_result_test.py`.
+
+### Test the model
+
+```
+torchrun --nproc_per_node={the num of the GPUs} get_result_test.py
+```
+
+
+
+
