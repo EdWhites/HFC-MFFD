@@ -17,27 +17,6 @@ def ResNet_50_dct(weights=models.ResNet50_Weights.DEFAULT):
     resnet_50 = new_model
     return resnet_50
 
-class AttentionResNet(nn.Module):
-    def __init__(self,n_classes):
-        super(AttentionResNet, self).__init__()
-        self.fc1=nn.Linear(18432,2048)
-        self.dropout=nn.Dropout(0.5)
-        self.fc2=nn.Linear(2048,512)
-        self.fc3 = nn.Linear(512, n_classes)
-        self.act=nn.ReLU()
-        self.attention = TransformerEncoderLayer(d_model=2048,nhead=8)
-    def forward(self,x):
-        x=x.view(-1,9,2048)
-        x=self.attention(x)
-        x=x.view(-1,18432)
-        x = self.fc1(x)
-        x = self.act(x)
-        x = self.dropout(x)
-        x = self.fc2(x)
-        x = self.act(x)
-        x = self.dropout(x)
-        x = self.fc3(x)
-        return x
 
 class R_MLP(nn.Module):
     def __init__(self,n_classes):
