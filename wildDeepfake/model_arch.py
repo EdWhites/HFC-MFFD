@@ -10,8 +10,8 @@ def ResNet_50():
     resnet_50 = new_model
     return resnet_50
 
-def ResNet_50_dct(weights=models.ResNet50_Weights.DEFAULT):
-    resnet_50 = models.resnet50()
+def ResNet_50_dct():
+    resnet_50 = models.resnet50(weights=models.ResNet50_Weights.DEFAULT)
     resnet_50.conv1 = nn.Conv2d(1, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
     new_model = nn.Sequential(*list(resnet_50.children())[:-1])
     resnet_50 = new_model
