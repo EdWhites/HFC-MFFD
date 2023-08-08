@@ -66,5 +66,16 @@ torchrun --nproc_per_node={the num of the GPUs} get_result_test.py
 torchrun --nproc_per_node=1 get_score_save.py
 ```
 
+### BibTeX
+```
+@article{liu2022hierarchical,
+  title={Hierarchical Forgery Classifier On Multi-modality Face Forgery Clues},
+  author={Liu, Decheng and Zheng, Zeyang and Peng, Chunlei and Wang, Yukai and Wang, Nannan and Gao, Xinbo},
+  journal={arXiv preprint arXiv:2212.14629},
+  year={2022}
+}
+```
+
+
 
 
