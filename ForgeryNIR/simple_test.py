@@ -58,13 +58,13 @@ if __name__ == '__main__':
     model_path_dict,feature_path_dict=cfg.get_feature_and_model(traindir=args.train_dir,testdir=args.test_dir)
 
     resnet_feature_b=np.load(feature_path_dict['resnet_feature_path_b'])
-    resnet_model_b=model_arch.AttentionResNet(n_classes=2).cuda()
+    resnet_model_b=model_arch.AttentionResNet(n_classes=2,patch_num=9).cuda()
     resnet_model_b.load_state_dict(torch.load(model_path_dict['resnet_model_path_b']))
     score_resnet_b=get_result(model=resnet_model_b,feature=resnet_feature_b,usage='binary_classification')
     del resnet_feature_b
 
     resnet_dct_feature_b=np.load(feature_path_dict['resnet_dct_feature_path_b'])
-    resnet_dct_model_b=model_arch.AttentionResNet(n_classes=2).cuda()
+    resnet_dct_model_b=model_arch.AttentionResNet(n_classes=2,patch_num=9).cuda()
     resnet_dct_model_b.load_state_dict(torch.load(model_path_dict['resnet_dct_model_path_b']))
     score_resnet_dct_b=get_result(model=resnet_dct_model_b,feature=resnet_dct_feature_b,usage='binary_classification')
     del resnet_dct_feature_b
@@ -78,7 +78,7 @@ if __name__ == '__main__':
     sift_model_g.load_state_dict(torch.load(model_path_dict['sift_model_path_g']))
     score_sift_g=get_result(model=sift_model_g,feature=sift_feature,usage='gan_classification')
 
-    resnet_model_g = model_arch.AttentionResNet(n_classes=4).cuda()
+    resnet_model_g = model_arch.AttentionResNet(n_classes=4,patch_num=9).cuda()
     resnet_feature_g=np.load(feature_path_dict['resnet_feature_path_g'])
     resnet_model_g.load_state_dict(torch.load(model_path_dict['resnet_model_path_g']))
 
