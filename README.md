@@ -48,6 +48,12 @@ python -m simple_test --train_dir std_multi --test_dir mix_multi
 ```
 
 ## Evaluation of the wildDeepfake dataset
+
+Before running these codes, you should install `torch-dct` which can perform DCT transform on tensors.
+```
+pip install torch-dct
+```
+
 ### Download trained models obtained from the wildDeepfake dataset for evaluation
 | Model   | Download                                                     |
 | ------- | ------------------------------------------------------------ |
